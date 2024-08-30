@@ -1,0 +1,9 @@
+・環境について
+pythonの仮想環境を利用
+python -m venv venv
+有効化
+source venv/bin/activate
+無効化
+deactivate
+
+
