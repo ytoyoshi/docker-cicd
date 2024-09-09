@@ -1,4 +1,7 @@
 ・環境について
+python 3.1
+
+memo
 pythonの仮想環境を利用
 python -m venv venv
 有効化

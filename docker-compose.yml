@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+  
+  postgres:
+    image: postgres:16.3
+    environment:
+      POSTGRES_DB: cicd_database
+      POSTGRES_USER: admin_user
+      POSTGRES_PASSWORD: password123
+    volumes:
+      - db_data_pos:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data_pos:
