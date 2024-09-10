@@ -8,7 +8,7 @@ This project demonstrates how to set up a basic CI/CD pipeline using Docker for 
 - [Docker Compose](https://docs.docker.com/compose/) (version 1.29 or later)
 - Python 3.10 (for local Django development)
 - PostgreSQL (version 16.3)
-  
+
 ## Project Structure
 
 ```
@@ -30,7 +30,35 @@ git clone https://github.com/ytoyoshi/docker-cicd.git
 cd docker-cicd
 ```
 
-### Step 2: Configure environment variables
+### Step 2: Set up a Python virtual environment
+
+1. **Create the virtual environment:**
+
+   ```bash
+   python3 -m venv venv
+   ```
+
+2. **Activate the virtual environment:**
+
+   - On macOS/Linux:
+
+     ```bash
+     source venv/bin/activate
+     ```
+
+   - On Windows:
+
+     ```bash
+     venv\Scripts\activate
+     ```
+
+3. **Install dependencies from `requirements.txt`:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Step 3: Configure environment variables
 Modify the `.env` file located in the root directory of the repository (`https://github.com/ytoyoshi/docker-cicd/tree/main/dockercicd`) to define the necessary environment variables. Ensure the values match the settings defined in `docker-compose.yml`:
 
 ```bash
@@ -41,7 +69,7 @@ DB_HOST=db   # This should match the service name in docker-compose.yml
 DB_PORT=5432   # Default PostgreSQL port
 ```
 
-### Step 3: Build and run the Docker containers
+### Step 4: Build and run the Docker containers
 To build and start the application, run:
 
 ```bash
@@ -53,21 +81,21 @@ This command will:
 - Launch the Django web application
 - Start the NGINX reverse proxy
 
-### Step 4: Apply Django database migrations
+### Step 5: Apply Django database migrations
 Run the following command to apply migrations and initialize the database schema:
 
 ```bash
 docker-compose exec web python manage.py migrate
 ```
 
-### Step 5: Create a Django superuser (optional)
+### Step 6: Create a Django superuser (optional)
 To create an admin user for accessing the Django admin panel, run:
 
 ```bash
 docker-compose exec web python manage.py createsuperuser
 ```
 
-### Step 6: Access the application
+### Step 7: Access the application
 You can now access the application and the Django admin panel using the following URLs:
 
 - Web application: `http://localhost`
@@ -98,7 +126,7 @@ docker-compose down
 ```
 
 ## Directory Structure
-- `/django/` - Contains the Django project code.
+- `/dockercicd/` - Contains the　dockercicd Django project code.
 - `/nginx/` - NGINX configuration files for the reverse proxy.
 - `docker-compose.yml` - Configuration for Docker services (Django, PostgreSQL, NGINX).
 - `Dockerfile` - Instructions to build the Django application Docker image.
