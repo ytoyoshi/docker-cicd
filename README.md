@@ -13,7 +13,7 @@ This project demonstrates how to set up a basic CI/CD pipeline using Docker for 
 
 ```
 /docker-cicd
-    ├── django/               # Django project source files
+    ├── dockercicd/               # Django project source files
     ├── nginx/                # Nginx configuration
     ├── docker-compose.yml    # Docker Compose configuration
     ├── Dockerfile            # Django application Dockerfile
@@ -31,14 +31,14 @@ cd docker-cicd
 ```
 
 ### Step 2: Configure environment variables
-Create a `.env` file in the root directory and define the necessary environment variables:
+Modify the `.env` file located in the root directory of the repository (`https://github.com/ytoyoshi/docker-cicd/tree/main/dockercicd`) to define the necessary environment variables. Ensure the values match the settings defined in `docker-compose.yml`:
 
 ```bash
-DB_NAME=your_db_name
-DB_USER=your_db_user
-DB_PASSWORD=your_db_password
-DB_HOST=db
-DB_PORT=5432
+DB_NAME=your_db_name   # Replace with the actual database name
+DB_USER=your_db_user   # Replace with the actual database username
+DB_PASSWORD=your_db_password   # Replace with the actual database password
+DB_HOST=db   # This should match the service name in docker-compose.yml
+DB_PORT=5432   # Default PostgreSQL port
 ```
 
 ### Step 3: Build and run the Docker containers
