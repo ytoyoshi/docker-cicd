@@ -13,7 +13,7 @@ This project demonstrates how to set up a basic CI/CD pipeline using Docker for 
 
 ```
 /docker-cicd
-    ├── dockercicd/               # Django project source files
+    ├── dockercicd/           # Django project source files
     ├── nginx/                # Nginx configuration
     ├── docker-compose.yml    # Docker Compose configuration
     ├── Dockerfile            # Django application Dockerfile
