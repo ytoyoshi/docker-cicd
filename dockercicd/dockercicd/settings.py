@@ -145,7 +145,3 @@ LOGIN_REDIRECT_URL = '/docker-cicd/home'
 
 # URL for the login page
 LOGIN_URL = '/docker-cicd/login/'
-
-# Specify the template pack to be used by django-crispy-forms.
-# In this case, we are using Bootstrap 4 for styling the forms.
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
