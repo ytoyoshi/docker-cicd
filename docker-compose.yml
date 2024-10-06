@@ -1,9 +1,29 @@
-version: '3'
+version: '3.8'
 services:
+  django:
+    build: .
+    command: gunicorn dockercicd.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    expose:
+      - "8000"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
   nginx:
     image: nginx:latest
     ports:
       - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - django
+    networks:
+      - app-network
   
   postgres:
     image: postgres:16.3
@@ -12,7 +32,7 @@ services:
       POSTGRES_USER: admin_user
       POSTGRES_PASSWORD: password123
     volumes:
-      - db_data_pos:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
@@ -23,4 +43,4 @@ networks:
     driver: bridge
 
 volumes:
-  db_data_pos:
+  postgres_data:
